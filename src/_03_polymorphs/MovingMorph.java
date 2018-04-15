@@ -3,9 +3,10 @@ package _03_polymorphs;
 import java.awt.Color;
 import java.awt.Graphics;
 
-public class BluePolymorph extends Polymorph{
-
-	BluePolymorph(int x, int y) {
+public class MovingMorph extends Polymorph{
+	int a=0;
+	int b=0;
+	MovingMorph(int x, int y) {
 		super(x, y);
 	}
 	int x=xGetter();
@@ -13,8 +14,9 @@ public class BluePolymorph extends Polymorph{
 
 	@Override
 	public void draw(Graphics g) {
-		g.setColor(Color.blue);
-		g.fillRect(x, y, 50, 50);
+		a++;
+		b++;
+		g.fillRect(x+b, y+a, 50, 50);
 	}
 	
 }
