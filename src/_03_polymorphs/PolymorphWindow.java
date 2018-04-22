@@ -22,11 +22,15 @@ public class PolymorphWindow extends JPanel implements ActionListener{
     ArrayList<Polymorph> s;
     
     public static void main(String[] args) {
+    	ArrayList<Polymorph> s = new ArrayList<Polymorph>();
+       	Polymorph b=new BluePolymorph(50, 50);
+       	s.add(b);
+       	Polymorph r=new RedMorph(100, 100);
+        s.add(r);
+        Polymorph m=new MovingMorph(150,150);
+        s.add(m);
    	 new PolymorphWindow().buildWindow();
-   	 ArrayList<Polymorph> s = new ArrayList<Polymorph>();
-     s.add(new BluePolymorph(50, 50));
-     s.add(new RedMorph(100, 100));
-     s.add(new MovingMorph(150,150));
+   	 
     }
     
     public void buildWindow(){
@@ -43,13 +47,15 @@ public class PolymorphWindow extends JPanel implements ActionListener{
    	 timer.start();
     }
     
-    public void paintComponent(Graphics g){
+    @SuppressWarnings("static-access")
+	public void paintComponent(Graphics g){
     //draw background
    	 g.setColor(Color.LIGHT_GRAY);
    	 g.fillRect(0, 0, 500, 500);
    	
    	 //draw polymorph
    	 for(int i=0;i<s.size();i++) {
+   		 System.out.println(s.get(i).xGetter());
    		 s.get(i).draw(g);
    	 }
     }
